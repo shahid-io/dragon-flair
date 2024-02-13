@@ -1,22 +1,36 @@
-import { Controller, Post, Req, Body } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { AuthDto } from './dto';
-
-@Controller("auth")
+import { AuthDto, SignInDto } from './dto';
 export class AuthController {
     constructor(private authService: AuthService) { }
 
     @Post('signup')
     async signup(@Body() dto: AuthDto) {
-        const data = await this.authService.signup(dto);
-        return { data }
+        try {
+            const data = await this.authService.signup(dto);
+            const response = {
+                message: Constants.SIGNUP_SUCCESS,
+                status: StatusCodes.STATUS_CREATED,
+                data: data,
+            }
+            return response;
+        } catch (error) {
+            throw error;
+        }
     }
 
     @Post('signin')
-    signin() {
-        return { message: "Sign in" }
+    async signin(@Body() dto: SignInDto) {
+        try {
+            const data = await this.authService.signin(dto);
+            const response = {
+                message: Constants.LOGIN_SUCCESS,
+                status: StatusCodes.STATUS_OK,
+                data: data,
+            }
+            return response;
+        } catch (error) {
+            throw error;
+        }
     }
-
-
-
 }
