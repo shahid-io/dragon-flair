@@ -1,13 +1,13 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { AuthDto, SignInDto } from './dto';
+import { SignUpDto, SignInDto } from './dto';
 import { Constants, ErrorCodes, StatusCodes } from "../utils/common"
 @Controller("auth")
 export class AuthController {
     constructor(private authService: AuthService) { }
 
     @Post('signup')
-    async signup(@Body() dto: AuthDto) {
+    async signup(@Body() dto: SignUpDto) {
         try {
             const data = await this.authService.signup(dto);
             const response = {
