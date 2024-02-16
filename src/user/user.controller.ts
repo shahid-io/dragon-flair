@@ -23,8 +23,9 @@ export class UserController {
     }
 
     @Get()
-    async getAllUsers() {
+    async getAllUsers(@Req() req: Request) {
         try {
+            
             const data = await this.userService.getAllUsers();
             const response = {
                 message: Constants.FETCHED_DATA,
