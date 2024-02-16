@@ -4,5 +4,6 @@ export const Constants = {
     PASSWORD_INCORRECT: "Password Incorrect",
     LOGIN_SUCCESS: "Login Success",
     SIGNUP_SUCCESS: "Signup Success",
+    FETCHED_DATA: "Fetched All Data"
 }
 
