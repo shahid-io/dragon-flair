@@ -20,9 +20,11 @@ export class SignUpDto {
     @IsNotEmpty()
     @IsString()
     password: string;
-    @IsNotEmpty()
     @IsNumber()
-    status: number
+    status?: number;
+    @IsNumber()
+    userTypeId?: number;
+
 }
 
 export class SignInDto {

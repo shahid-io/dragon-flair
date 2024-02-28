@@ -26,6 +26,8 @@ export class AuthService {
                     phone: dto.phone,
                     email: dto.email,
                     password,
+                    status: dto.status,
+                    userTypeId: dto.userTypeId,
                 },
                 select: {
                     id: true, firstName: true, lastName: true, email: true
